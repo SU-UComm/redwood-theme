@@ -25,5 +25,11 @@ University Communications uses [Local](https://localwp.com/) to create local Wor
 ### Configure front-end development environment
 The [Redwood Dev](https://github.com/SU-UComm/redwood-dev) repo contains the source SCSS
 and JS for Redwood and all child themes of Redwood. If you plan to work on the front-end
-of Redwood or any child themes, follow the instructions to clone that repo and configure
-the front-end dev environment.
+of Redwood or any child themes, follow the
+[instructions in the Redwood Dev repo](https://github.com/SU-UComm/redwood-dev)
+to clone that repo and configure the front-end dev environment.
+
+> Note: You should **clone and configure this repo before cloning and configuring
+> Redwood Dev**, as the last step in configuring Redwood Dev copies Decanter's
+> Twig templates to this theme's directory. This theme directory must therefore
+> exist prior to doing `npm install` in the `dev/` directory.
