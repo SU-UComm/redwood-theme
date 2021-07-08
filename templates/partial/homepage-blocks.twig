@@ -1,0 +1,5 @@
+{% block banner_image %}
+  {% if fn('is_front_page') %}
+    {% include "shortcodes/banner.twig" %}
+  {% endif %}
+{% endblock %}

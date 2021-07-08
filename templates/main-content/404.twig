@@ -1,0 +1,8 @@
+<h1>Where did that page go?</h1>
+<p class="intro-text">Even our radio telescope can't find the page you're looking for. It might have been moved or does not exist.</p>
+
+{% if option.show_search %}
+  {% include "partial/searchform.twig" %}
+{% endif %}
+
+<a href="/" class="btn">Go back to the homepage&nbsp; »</a>

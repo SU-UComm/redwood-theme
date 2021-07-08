@@ -1,0 +1,6 @@
+{% for post in posts %}
+  {% include ["partial/tease-"~post.post_type~".twig", "partial/tease.twig"] %}
+{% endfor %}
+{% if more %}
+  <a href="{{ more.url }}" class="see-all">{{ more.content }}</a>
+{% endif %}

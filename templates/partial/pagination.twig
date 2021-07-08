@@ -1,0 +1,28 @@
+{% if posts.pagination.pages is not empty %}
+  <nav aria-label="pagination">
+    <ul>{% spaceless %}
+        {% if pagination.prev %}
+          <li><a href="{{ pagination.prev.link }}" rel="prev">Previous</a></li>
+        {% else %}
+          <li class="disabled"><span>Previous</span></li>
+        {% endif %}
+
+        {% for page in pagination.pages %}
+          {% if page.link %}
+            <li><a href="{{ page.link }}" aria-label="page {{ page.title }}">{{ page.title }}</a></li>
+          {# Check if page.title is a number #}
+          {% elseif (page.title / page.title) == 1 %}
+            <li class="current"><span aria-label="current page, page {{ page.title }}" aria-current="page">{{ page.title }}</span></li>
+          {% else  %}
+            <li class="disabled"><span>{{ page.title }}</span></li>
+          {% endif %}
+        {% endfor %}
+
+        {% if pagination.next %}
+          <li><a href="{{ pagination.next.link }}" rel="next">Next</a></li>
+        {% else %}
+          <li class="disabled"><span>Next</span></li>
+        {% endif %}
+      {% endspaceless %}</ul>
+  </nav>
+{% endif %}

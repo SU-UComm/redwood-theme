@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html {{ site.language_attributes }}>
+
+	{% block html_head_container %}
+		<head>
+			{% include 'partial/html-header.twig' %}
+      {{ function('wp_head') }}
+
+			{% block head %}
+			{% endblock %}
+		</head>
+	{% endblock %}
+
+	<body class="{{ body_class }} {{ layout_class }}">
+
+		{% block header %}
+			<header>
+				{% include 'partial/header.twig' %}
+
+        {% block banner_image %}
+        {% endblock %}
+			</header>
+		{% endblock %}
+
+		<main id="main" aria-label="content">
+      {% block left_nav %}
+        {% if left_nav %}
+          {% include "decanter//components/main-nav/main-nav.twig" with left_nav.get_decanter_data %}
+        {% endif %}
+      {% endblock %}
+
+			<section>
+			{% block main %}
+				{% if title %}
+					<h1>{{ title }}</h1>
+				{% endif %}
+				{% block content %}
+					{% include 'main-content/' ~ content_template %}
+				{% endblock %}
+			{% endblock %}
+			</section>
+
+			{% block left_sidebar %}
+			{% endblock %}
+
+			{% block right_sidebar %}
+			{% endblock %}
+
+		</main>
+
+		{% block footer %}
+			<footer>
+				{% include 'partial/footer.twig' %}
+			</footer>
+      {{ function('wp_footer') }}
+		{% endblock %}
+
+	</body>
+</html>

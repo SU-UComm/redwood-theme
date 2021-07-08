@@ -1,0 +1,11 @@
+{{ before_widget }}
+  {% if icon %}
+    <span class="fa {{ icon }}" aria-hidden="true"></span>
+  {% endif %}
+  <div class="info-box__content">
+    {% if title %}
+      {{ before_title }}{{ title }}{{ after_title }}
+    {% endif %}
+    {{ content }}
+  </div>
+{{ after_widget }}

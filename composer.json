@@ -1,0 +1,34 @@
+{
+  "name": "stanford/redwood",
+  "description": "Stanford WordPress theme. Based on Timber starter theme.",
+  "type":"wordpress-theme",
+  "minimum-stability" : "stable",
+  "authors": [
+      {
+          "name": "jbchrsty",
+          "email": "jbchrsty@stanford.edu"
+      }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "extra": {
+  	"installer-paths": {
+      "../../plugins/{$name}/": [
+        "wpackagist-plugin/*",
+        "type:wordpress-plugin"
+      ]
+  	}
+	},
+  "require": {
+    "timber/timber": "^1.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "Stanford\\Redwood\\": "src/"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{% extends "layout/base.twig" %}
+
+{% set layout_class  = "three-column" %}
+{% set template_file = "three-column.twig" %}
+
+{% use "partial/homepage-blocks.twig" %}
+
+{% block left_sidebar %}
+  {% if left_sidebar %}
+    <aside id="sidebar--left" aria-label="left sidebar">
+      {{ left_sidebar }}
+    </aside>
+  {% endif %}
+{% endblock %}
+
+{% block right_sidebar %}
+  {% if right_sidebar %}
+    <aside id="sidebar--right" aria-label="right sidebar">
+      {{ right_sidebar }}
+    </aside>
+  {% endif %}
+{% endblock %}

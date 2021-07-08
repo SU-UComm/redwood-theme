@@ -1,0 +1,23 @@
+{{ before_widget }}
+
+  {% if avatar %}
+    {{ avatar }}
+  {% endif %}
+
+  {{ before_title }}{{ name }}{{ after_title }}
+
+  {% if author_url %}
+    <a href="{{ author_url }}" aria-label="{{ name }}'s website"><i class="fas fa-link" aria-hidden="true"></i>Website</a>
+  {% endif %}
+
+  {% if author_email %}
+    <a href="mailto:{{ author_email }}" aria-label="Email {{ name }}"><i class="far fa-envelope" aria-hidden="true"></i>Email</a>
+  {% endif %}
+
+  {% if description %}
+    <p>{{ description }}</p>
+  {% endif %}
+
+  <a href="{{ page_url }}" class="read-more">See all posts by {{ name }}</a>
+
+{{ after_widget }}

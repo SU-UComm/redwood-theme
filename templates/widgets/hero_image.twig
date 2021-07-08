@@ -1,0 +1,15 @@
+{{ before_widget }}
+  <figure>
+  <a href="{{ url }}" {% if not alt %}aria-label="Link to original image"{% endif %}><img
+    src="{{ url }}"
+    {% if srcset %}
+      srcset="{{ srcset }}"
+      sizes="(max-width: 575px) calc(100vw - 40px), (max-width: 767px) calc(100vw - 60px), 722px"
+    {% endif %}
+    alt="{{ alt }}"
+  /></a>
+  {% if caption %}
+    <figcaption>{{ caption }}</figcaption>{# caption may include markup, including <p> tags #}
+  {% endif %}
+  </figure>
+{{ after_widget }}

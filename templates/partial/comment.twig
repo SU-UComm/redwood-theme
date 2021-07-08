@@ -1,0 +1,32 @@
+<li class="comment">
+	<figure class="comment__body {% if comments.show_avatars %}comment__body--avatar{%- endif %}" id="comment-{{ comment.ID }}">
+		<header>
+			{% if comments.show_avatars %}
+				<img src="{{ comment.author.avatar }}" class="comment__avatar" alt="" role="presentation">{{ comment.comment_type }}
+			{% endif %}
+			<p>{{ function('comment_author_link', comment.ID) }} wrote
+        {% if "administrator" in user.roles | print_r or 'editor' in user.roles | print_r %}
+					<a href="/wp-admin/comment.php?action=editcomment&#038;c={{ comment.ID }}" class="comment__edit-link">Edit</a>
+				{% endif %}
+			</p>
+			<p><a href="{{ post.path }}#comment-{{ comment.ID }}" aria-label="Permalink to comment on {{ comment.date }} {{comment.time}}"><time datetime="{{ comment.date }} {{comment.time}}">{{ comment.date }} {{ comment.time }}</time></a></p>
+		</header>
+		<div class="comment__content">{{ comment.content }}</div>
+    {% if post.comment_status != "closed" %}
+			{% if user or not comments.comment_registration %}
+				<button class="comment__reply" aria-controls="reply-form-{{ comment.ID }}" aria-expanded="false">Reply to {{ comment.author.name }}</button>
+			{% endif %}
+    {% endif %}
+	</figure>
+  {% if user or not comments.comment_registration %}
+		{% include 'partial/comment-form.twig' %}
+  {% endif %}
+	<!-- nested comments here -->
+	{% if comment.children %}
+		<ol class="comment__reply-list">
+			{% for child_comment in comment.children %}
+				{% include 'partial/comment.twig' with { comment:child_comment } %}
+			{% endfor %}
+		</ol>
+	{% endif %}
+</li>

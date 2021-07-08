@@ -1,0 +1,14 @@
+{% extends "layout/base.twig" %}
+
+{% set layout_class  = "two-column--left-sidebar" %}
+{% set template_file = "two-column--left-sidebar.twig" %}
+
+{% use "partial/homepage-blocks.twig" %}
+
+{% block left_sidebar %}
+  {% if left_sidebar %}
+    <aside id="sidebar--left" aria-label="left sidebar">
+      {{ left_sidebar }}
+    </aside>
+  {% endif %}
+{% endblock %}

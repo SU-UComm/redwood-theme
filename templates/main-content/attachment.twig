@@ -1,0 +1,81 @@
+{% if post.link ends with '.docx' or post.link ends with 'doc' %}
+  {% set file_type = 'Word' %}
+{% elseif post.link ends with 'xlsx' or post.link ends with '.xls' %}
+  {% set file_type = 'Excel' %}
+{% elseif post.link ends with '.ppt' or post.link ends with 'pptx' %}
+  {% set file_type = 'PowerPoint' %}
+{% elseif post.link ends with '.pdf' %}
+  {% set file_type = 'PDF' %}
+{% elseif post.post_mime_type starts with 'image' %}
+  {% set file_type = 'Image' %}
+{% elseif post.post_mime_type starts with 'video' %}
+  {% set file_type = 'Video' %}
+{% elseif post.post_mime_type starts with 'audio' %}
+  {% set file_type = 'Audio' %}
+{% else %}
+  {% set file_type = '' %}
+{% endif %}
+
+{% set file_name = post.custom._wp_attached_file | split('/') | last %}
+{% set extension = file_name | split('.') | last %}
+
+
+<article class="post post--type-attachment post--type-{{ content_template|replace({ '-': '--', '.twig': '' }) }}" id="post-{{post.ID}}">
+  <header>
+    {% block title %}
+      <h1>File information</h1>
+    {% endblock %}
+
+    <p>Uploaded by
+      <a href="{{ post.author.path }}">{{ post.author }}</a> on <time datetime="{{ post.post_date }}">{{ post.date }} {{ post.time }}</time>
+    </p>
+  </header>
+  <section class="post__content">
+    {% block media %}
+      <a href="{{ post.link }}" class="btn">View file '{{ post.title }}'
+        <i
+            {% if file_type == 'Word' %}
+              class="fas fa-file-word"
+            {% elseif file_type == 'Excel' %}
+              class="fas fa-file-excel"
+            {% elseif file_type == 'PowerPoint' %}
+              class="fas fa-file-powerpoint"
+            {% else %}
+              class="fas fa-file"
+            {% endif %}
+
+            aria-hidden="true"></i>
+      </a>
+    {% endblock %}
+
+    <dl>
+      <dt>File name:</dt>
+      <dd>{{ post.custom._wp_attached_file | split('/') | last }}</dd>
+
+    {% if file_type is not empty %}
+      {% block mediainfo %}
+        <dt>File type:</dt>
+        <dd>{{ file_type }} (.{{ extension }})</dd>
+      {% endblock %}
+    {% endif %}
+
+    {% if post.post_parent != 0 %}
+      <dt>Uploaded to:</dt>
+      <dd><a href="{{ parent.link }}">{{ parent.title }}</a></dd>
+    {% endif %}
+
+    {% if post.post_excerpt %}
+      {% if not ( file_type == 'Video' or file_type == 'Image' or file_type =='Audio' ) %}
+        <dt>Summary:</dt>
+        <dd>{{ post.post_excerpt }}</dd>
+      {% endif %}
+    {% endif %}
+
+    {% if post.content %}
+      <dt>Description:</dt>
+      <dd>{{ post.content }}</dd>
+    {% endif %}
+    </dl>
+
+  </section>
+</article>

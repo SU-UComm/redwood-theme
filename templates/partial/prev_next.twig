@@ -1,0 +1,10 @@
+{% if prev_next %}
+<nav class="prev-next" aria-label="posts">
+  {% if prev_next.previous %}
+    <a href="{{ prev_next.previous.url }}" rel="prev"><p>Previous Post</p><p>{{ prev_next.previous.title }}</p></a>
+  {% endif %}
+  {% if prev_next.next %}
+    <a href="{{ prev_next.next.url }}" rel="next"><p>Next Post</p><p>{{ prev_next.next.title }}</p></a>
+  {% endif %}
+</nav>
+{% endif %}

@@ -1,0 +1,36 @@
+<article class="tease tease--{{post.post_type}} {{ post.custom.is_sticky ? 'sticky' }}">
+  {% block img %}
+    {% if post.thumbnail.src %}
+      {% if post.link %}<a href="{{ post.link }}" tabindex="-1" aria-hidden="true" class="tease__img-link">{% endif %}
+			<img src="{{ post.thumbnail.src|resize('thumbnail') }}"
+					 srcset="{{ post.thumbnail.srcset }}"
+					 sizes="(max-width: 767px) 120px, 200px"
+					 alt="" role="presentation" />
+      {% if post.link %}</a>{% endif %}
+    {% endif %}
+  {% endblock %}
+
+	{% block header %}
+		{% set heading = heading ?? '2' %}
+
+		<header>
+			<h{{ heading }}>{% if post.link %}<a href="{{ post.link }}">{% endif %}{{ post.title }}{% if post.link %}</a>{% endif %}</h{{ heading }}>
+      {%- block meta %}
+        {% if option.show_author_in_byline %}
+					<p class="author">By <a href="{{ post.author.path }}">{{ post.author.name }}</a></p>
+        {% endif %}
+        {% if post.post_date %}
+					<time datetime="{{ post.post_date }}">{{ post.date }}</time>
+        {% endif %}
+      {% endblock -%}
+		</header>
+  {% endblock %}
+
+  {% block content %}
+		<p>
+			{{ post.get_preview( 30, 0, '', '<a><b><code><del><em><i><mark><pre><q><s><strong><sub><sup><u>' ) }}
+		</p>
+    {% if post.link %}<a href="{{ post.link }}" class="read-more">Read more<span class="su-sr-only-element"> about {{ post.title }}</span></a>{% endif %}
+  {% endblock %}
+
+</article>

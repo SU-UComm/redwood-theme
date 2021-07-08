@@ -1,0 +1,10 @@
+## Team
+
+University Communications, Stanford University
+https://ucomm.stanford.edu/
+
+
+## Site
+
+Theme: Redwood - Stanford branded WordPress theme by University Communications
+Built with [Timber](http://upstatement.com/timber) by Upstatement

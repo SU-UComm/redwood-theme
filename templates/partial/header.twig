@@ -1,0 +1,38 @@
+{% include "decanter//components/skiplinks/link.twig" with { "target_id": "main" } %}
+
+{% if brand.bar == 'bar' %}
+  {% if brand.color != 'cardinal' %}
+    {% set modifier_class = "su-brand-bar--" ~ brand.color %}
+  {% endif %}
+  {% include "decanter//components/brand-bar/brand-bar.twig" %}
+  {% set modifier_class = "" %} {# reset so it doesn't affect subsequent templates #}
+{% endif %}
+
+<section class="masthead">
+    {% if brand.lockup %}
+      {% include "decanter//components/lockup/lockup.twig" with
+        {
+          "link": "/",
+          "line1": site.title,
+          "line3": site.description,
+          "modifier_class": brand.class
+        }
+      %}
+    {% else %}
+      {% include "partial/sitename.twig" with
+        {
+          "site_href": "/",
+          "site_title": site.title,
+          "site_subhead": site.description
+        }
+      %}
+    {% endif %}
+
+    {% if option.show_search %}
+      {% include "partial/searchform.twig" %}
+    {% endif %}
+
+    {% if top_nav %}
+      {% include "decanter//components/main-nav/main-nav.twig" with top_nav.get_decanter_data %}
+    {% endif %}
+</section>

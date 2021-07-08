@@ -1,0 +1,20 @@
+{% if content_template == "author.twig" %}
+  {% set heading = '3' %}
+{% endif %}
+
+{% block subtitle %}
+{% endblock %}
+
+{% for post in posts %}
+  {% if option.list_page_display == 'excerpts' %}
+    {% include ["partial/tease-"~post.post_type~".twig", "partial/tease.twig"] %}
+  {% else %}
+    {% include "main-content/single.twig" %}
+  {% endif %}
+{% else %}
+  <p>No posts match your request.</p>
+{% endfor %}
+
+{% block pagination %}
+{% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
+{% endblock %}

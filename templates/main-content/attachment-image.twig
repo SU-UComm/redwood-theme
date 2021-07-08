@@ -1,0 +1,30 @@
+{% extends "main-content/attachment.twig" %}
+
+{% block title %}
+  <h1>Image information</h1>
+{% endblock %}
+
+{% block media %}
+  <figure>
+    <img src="{{ post.link }}" alt="{{ post.custom._wp_attachment_image_alt }}" />
+    {% if post.post_excerpt %}<figcaption>{{ post.post_excerpt }}</figcaption>{% endif %}
+  </figure>
+{% endblock %}
+
+{% block mediainfo %}
+  <dt>File type:</dt>
+  <dd>{{ post.post_mime_type }}</dd>
+
+  <dt>Image dimensions:</dt>
+  <dd>{{ post.custom._wp_attachment_metadata.width }} x {{ post.custom._wp_attachment_metadata.height }}</dd>
+
+  {% if post.custom._wp_attachment_metadata.image_meta.credit %}
+    <dt>Credit:</dt>
+    <dd>{{ post.custom._wp_attachment_metadata.image_meta.credit }}</dd>
+  {% endif %}
+
+  {% if post.custom._wp_attachment_metadata.image_meta.copyright %}
+    <dt>Copyright:</dt>
+    <dd>{{ post.custom._wp_attachment_metadata.image_meta.copyright }}</dd>
+  {% endif %}
+{% endblock %}

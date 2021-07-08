@@ -1,0 +1,81 @@
+<article class="post post--type-{{post.post_type}}" id="post-{{post.ID}}">
+  {% if not homepage %}
+    <header>
+      {% if option.show_featured_image and post.thumbnail %}
+        {% if content_template == "archive.twig" or content_template == "author.twig" %}
+          {% if post.path %}<a href="{{ post.path }}" tabindex="-1">{% endif %}
+        {% endif -%}
+
+        <img class="img--featured"
+          src="{{ post.thumbnail.src("large") }}"
+          {% if post.thumbnail.srcset %}
+            srcset="{{ post.thumbnail.srcset }}"
+            sizes="(max-width: 767px) 100vw,
+            (max-width: 991px) calc(100vw - 100px),
+            (max-width: 1199px) calc(100vw - 160px),
+            (max-width: 1499px) calc((100vw - 200px) * 5 / 6)
+            (max-width: 1699px) calc((100vw - 200px) * 2 / 3),
+            1000px"
+          {% endif %}
+          alt="{{ post.thumbnail.alt }}">
+
+        {%- if content_template == "archive.twig" or content_template == "author.twig" %}
+          {%- if post.path %}</a>{% endif %}
+        {% endif %}
+      {% endif %}
+
+      {% if content_template == "archive.twig" %}
+        <h2>{% if post.path %}<a href="{{ post.path }}">{% endif %}{{ post.title }}{% if post.path %}</a>{% endif %}</h2>
+      {% elseif content_template == "author.twig" %}
+        <h3>{% if post.path %}<a href="{{ post.path }}">{% endif %}{{ post.title }}{% if post.path %}</a>{% endif %}</h3>
+      {% else %}
+        <h1>{{ post.title }}</h1>
+      {% endif %}
+
+      {% block meta %}
+      {% endblock %}
+    </header>
+  {% else %}
+    {# we're rendering the home page#}
+    {% if option.show_homepage_title %}
+      <header>
+        <h1>{{ post.title }}</h1>
+      </header>
+    {% endif %}
+  {% endif %}
+
+  <section class="post__content">
+    {{ post.content }}
+  </section>
+
+  {% block tags %}
+  {% endblock %}
+
+  {% include 'partial/prev_next.twig' %}
+
+  {% if content_template != "archive.twig" and content_template != "author.twig" %}
+
+    {%- block comment -%}
+      {%- if post.comment_count or post.comment_status == "open" %}
+        <section class="post__comments no-js">
+          {% if post.comment_status == "closed" %}
+            <h3>Comments</h3>
+          {% else %}
+            <h3>Leave a comment</h3>
+          {%- endif -%}
+          {% include 'partial/comment-form.twig' %}
+
+          {% if post.comment_count %}
+            <h2>{{ post.comment_count }} {{ pluralize( post.comment_count, 'Comment' ) }} on &ldquo;{{ post.title }}&rdquo;</h2>
+            <ol class="comment__list">
+              {% for comment in post.comments %}
+                {% include 'partial/comment.twig' %}
+              {% endfor %}
+            </ol>
+          {%- endif -%}
+        </section>
+      {%- endif -%}
+    {%- endblock -%}
+
+  {%- endif -%}
+</article>

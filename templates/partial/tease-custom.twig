@@ -1,0 +1,12 @@
+{% extends "partial/tease.twig" %}
+
+{% block content %}
+  <section>
+    <p>
+      {{ post.excerpt }}
+    </p>
+  </section>
+  {% if post.link %}
+    <a href="{{ post.link }}" class="read-more">Read more{% if post.title %}<span class="su-sr-only-element"> about {{ post.title }}</span>{% endif %}</a>
+  {% endif %}
+{% endblock %}

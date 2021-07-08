@@ -1,0 +1,32 @@
+{% extends "main-content/page.twig" %}
+
+{%- block meta -%}
+  {%- if option.show_author_in_byline -%}
+    <p class="author">By
+      <a href="{{ post.author.path }}">{{ post.author }}</a>
+    </p>
+  {%- endif -%}
+
+  <time datetime="{{ post.post_date }}">{{ post.date }}</time>
+
+  {%- if multiple_categories and post.category %}
+    <p class="categories">
+      {{ pluralize( post.categories|length, 'Category' ) }}:
+      {% for term in post.categories -%}
+        <a href="{{ term.path }}">{{ term.name }}</a>
+        {%- if loop.last == false -%}, {% endif -%}
+      {%- endfor -%}
+    </p>
+  {%- endif %}
+{%- endblock -%}
+
+{%- block tags -%}
+  {%- if post.tags -%}
+    <section class="tags">
+      {{ pluralize( post.tags|length, 'Tag' ) }}:
+      {% for term in post.tags -%}
+        <a href="{{ term.path }}" rel="tag">{{ term.name }}</a>
+      {%- endfor -%}
+    </section>
+  {%- endif -%}
+{%- endblock -%}

@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Sitename component with site title and subheadline that links back to the website's homepage.
+ *
+ * Available variables:
+ * - site_href: The URL that the sitename links to.
+ * - site_title: The title of the website.
+ * - site_subhead: The subheadline in the site name.
+ */
+#}
+<a class="sitename" href="{{ site_href }}">
+  <span>{{ site_title }}</span>
+  {% if site_subhead %}
+    <span>{{ site_subhead }}</span>
+  {% endif %}
+</a>

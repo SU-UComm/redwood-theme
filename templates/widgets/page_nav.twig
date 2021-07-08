@@ -1,0 +1,20 @@
+{{ before_widget }}
+  {% if title %}
+    {{ before_title }}{{ title }}{{ after_title }}
+  {% endif %}
+{% if parent %}
+  <ul>
+    <li {% if parent_active %}class="current_page_item"{% endif %}>
+      {{ parent }}
+{%- endif %}
+    {% if pages %}
+      <ul>
+        {{ pages }}
+      </ul>
+    {%- endif %}
+{%- if parent %}
+    </li>
+  </ul>
+{%- endif %}
+  {{ content }}
+{{ after_widget }}

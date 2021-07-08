@@ -1,0 +1,36 @@
+{% if pre_footer %}
+<section id="pre-footer">
+  {# The pre-footer is completely optional and won't render if there isn't any content #}
+  {% if brand.show_in_footer %}
+    <div class="su-local-footer__header">
+    {% if brand.lockup %}
+      {% include "decanter//components/lockup/lockup.twig" with
+        {
+          "link": "/",
+          "line1": site.title,
+          "line3": site.description,
+          "modifier_class": brand.class
+        }
+      %}
+    {% else %}
+      {% include "partial/sitename.twig" with
+        {
+          "site_href": "/",
+          "site_title": site.title,
+          "site_subhead": site.description
+        }
+      %}
+    {% endif %}
+    </div>
+  {% endif %}
+  <section class="pre-footer__content">
+    {{ pre_footer }}
+  </section>
+</section>
+{% endif %}
+{{ dump_context() }} {# TODO remove this before launch #}
+
+{% if brand.color != 'cardinal' and brand.color != 'white' %}
+  {% set modifier_class = "su-global-footer--" ~ brand.color %}
+{% endif %}
+{% include 'decanter/components/global-footer/global-footer.twig' %}

@@ -1,0 +1,52 @@
+{% if post.comment_status == "closed" %}
+  {% if not comment %}
+    <p>Comments for this post are closed.</p>
+  {% endif %}
+{% elseif comments.comment_registration and not user and not comment %}
+  <p>You must be logged in to comment.</p>
+{% else %}
+    <form {% if comment %}class="comment__reply-form" id="reply-form-{{comment.ID}}" {% else %}class="comment__form"{% endif %} method="post" action="{{ site.site_url~'/wp-comments-post.php' }}">
+
+    {% if comment %}
+      <h3>Reply to {{ comment.author.name }}</h3>
+    {% endif %}
+
+    {% if user %}
+      <input type="hidden" name="email" value="{{ user.email }}">
+      <input type="hidden" name="author" value="{{ user.name }}">
+      <input type="hidden" name="url" value="{{ user.link }}">
+      <p><img src="{{ user.avatar }}" class="comment__avatar" alt="" role="presentation"> Logged in as {{ user.name }}.</p>
+    {% else %}
+
+      {% if comments.require_name_email == true %}
+        {% set require_name_email, aria_required = 'required', 'aria-required="true"' %}
+      {% endif %}
+
+      <div class="form__field--half">
+        <label for="author-{{comment.ID}}" class="{{ require_name_email }}">Name</label>
+        <input {{ require_name_email }} {{ aria_required }} name="author" id="author-{{comment.ID}}" type="text">
+      </div>
+
+      <div class="form__field--half">
+        <label for="email-{{comment.ID}}" class="{{ require_name_email }}">Email</label>
+        <input {{ require_name_email }} {{ aria_required }} name="email" type="text" id="email-{{comment.ID}}">
+      </div>
+
+      <label for="url-{{comment.ID}}">Website URL</label>
+      <input name="url" type="text" id="url-{{comment.ID}}">
+    {% endif %}
+
+      <label for="comment-{{comment.ID}}" class="required">Comment</label>
+      <textarea placeholder="Comment text" name="comment" id="comment-{{comment.ID}}" required aria-required="true"></textarea>
+
+      <p>Your comment might be held for review by the site administrator.</p>
+
+      <input name="comment_post_ID" value="{{ post.id }}" type="hidden">
+      <input name="comment_parent" value="{{ comment.ID|default('0') }}" type="hidden">
+
+      <button type="submit" name="Submit">Post Comment</button>
+      <button type="reset" name="Reset">Cancel</button>
+
+    </form>
+
+{% endif %}

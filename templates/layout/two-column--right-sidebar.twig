@@ -1,0 +1,14 @@
+{% extends "layout/base.twig" %}
+
+{% set layout_class  = "two-column--right-sidebar" %}
+{% set template_file = "two-column--right-sidebar.twig" %}
+
+{% use "partial/homepage-blocks.twig" %}
+
+{% block right_sidebar %}
+  {% if right_sidebar %}
+    <aside id="sidebar--right" aria-label="right sidebar">
+      {{ right_sidebar }}
+    </aside>
+  {% endif %}
+{% endblock %}

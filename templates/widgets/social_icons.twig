@@ -1,0 +1,26 @@
+{{ before_widget }}
+{% if title %}
+  {{ before_title }}{{ title }}{{ after_title }}
+{% endif %}
+{% if facebook_url %}
+  <a href="{{ facebook_url }}" aria-label="Facebook" title="Facebook"><i aria-hidden="true" class="fab fa-facebook fa-2x"></i></a>
+{% endif %}
+{% if twitter_url %}
+  <a href="{{ twitter_url }}" aria-label="Twitter" title="Twitter"><i aria-hidden="true" class="fab fa-twitter fa-2x"></i></a>
+{% endif %}
+{% if instagram_url %}
+  <a href="{{ instagram_url }}" aria-label="Instagram" title="Instagram"><i aria-hidden="true" class="fab fa-instagram fa-2x"></i></a>
+{% endif %}
+{% if linkedin_url %}
+  <a href="{{ linkedin_url }}" aria-label="LinkedIn" title="LinkedIn"><i aria-hidden="true" class="fab fa-linkedin fa-2x"></i></a>
+{% endif %}
+{% if itunes_url %}
+  <a href="{{ itunes_url }}" aria-label="iTunes U" title="iTunes U"><i aria-hidden="true" class="fab fa-apple fa-2x"></i></a>
+{% endif %}
+{% if youtube_url %}
+  <a href="{{ youtube_url }}" aria-label="YouTube" title="YouTube"><i aria-hidden="true" class="fab fa-youtube fa-2x"></i></a>
+{% endif %}
+{% if reddit_url %}
+  <a href="{{ reddit_url }}" aria-label="Reddit" title="Reddit"><i aria-hidden="true" class="fab fa-reddit fa-2x"></i></a>
+{% endif %}
+{{ after_widget }}

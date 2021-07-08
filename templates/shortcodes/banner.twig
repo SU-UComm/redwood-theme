@@ -1,0 +1,26 @@
+{% if banner.url %}
+<figure {% if banner.width == 'full' %}class="banner fullwidth"{% else %}class="banner contentwidth"{% endif %}>
+  <img
+    src="{{ banner.url }}"
+
+    {% if 'redwood/assets/img/banners' in banner.url %}
+      srcset="{{ banner.url|trim('.jpg') }}-800.jpg 800w,
+      {{ banner.url|trim('.jpg') }}-1200.jpg 1200w,
+      {{ banner.url|trim('.jpg') }}-1500.jpg 1500w,
+      {{ banner.url }} 2100w"
+
+      {% if banner.width == 'full' %}
+        sizes="100vw"
+      {% else %}
+        sizes="(min-width: 992px) and (max-width: 1199px) calc(100vw - 160px), (min-width: 1200px) and (max-width: 1699px) calc(100vw - 200px), (min-width: 1700px) 1500px, 100vw"
+      {% endif %}
+    {% endif %}
+
+  alt="" role="presentation">
+
+  {%- if banner.text %}<figcaption class="banner__text--{{ banner.text_location }}">{{ banner.text }}</figcaption>{% endif %}
+</figure>
+{% elseif banner.text %}
+  <section {% if banner.width == 'full' %}class="bannertext fullwidth"{% else %}class="bannertext contentwidth"{% endif -%}>
+  {{ banner.text }}</section>
+{% endif %}

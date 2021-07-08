@@ -1,0 +1,33 @@
+{% extends 'main-content/archive.twig' %}
+
+{% block subtitle %}
+
+  {% if show_inline.bio %}
+    <section class="author-info">
+      {% if show_inline.avatar %}
+        {{ show_inline.avatar }}
+      {% endif %}
+
+      <div class="author-info__content">
+        <h2>About {{ author.display_name }}</h2>
+
+        <p>{{ author.description }}</p>
+
+        {% if show_inline.website %}
+          <p><i class="fas fa-link" aria-hidden="true"></i> <a href="{{ author.user_url }}">Visit {{ author.display_name }}'s website</a></p>
+        {% endif %}
+
+        {% if show_inline.email %}
+          <p><i class="far fa-envelope" aria-hidden="true"></i> <a href="mailto:{{ author.user_email }}">Email {{ author.display_name }}</a></p>
+        {% endif %}
+      </div>
+    </section>
+  {% endif %}
+
+  <h2>Posts by {{ author.name }}</h2>
+
+{% endblock %}
+
+{% block pagination %}
+  {% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
+{% endblock %}
