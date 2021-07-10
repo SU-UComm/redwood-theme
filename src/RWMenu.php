@@ -64,22 +64,24 @@ class RWMenu extends \Timber\Menu {
    */
   protected function _structure_items( $items, $level = 1 ) {
     $menu_items = [];
-    foreach ( $items as $item ) {
-      $menu_item = [
-          "href" => $item->url
-        , "text" => $item->name
-      ];
-      if ( !empty( $item->target ) ) {
-        $menu_item[ 'target' ] = $item->target;
+    if ( !empty( $items ) ) {
+      foreach ( $items as $item ) {
+        $menu_item = [
+            "href" => $item->url
+          , "text" => $item->name
+        ];
+        if ( !empty( $item->target ) ) {
+          $menu_item[ 'target' ] = $item->target;
+        }
+        if ( $item->current || $item->current_item_parent ) {
+          $menu_item[ 'current' ] = "true";
+        }
+        if ( !empty( $item->children ) ) {
+          $next_level = $level + 1;
+          $menu_item[ "lv{$next_level}" ] = $this->_structure_items( $item->children, $next_level );
+        }
+        $menu_items[] = $menu_item;
       }
-      if ( $item->current || $item->current_item_parent ) {
-        $menu_item[ 'current' ] = "true";
-      }
-      if ( !empty( $item->children ) ) {
-        $next_level = $level + 1;
-        $menu_item[ "lv{$next_level}" ] = $this->_structure_items( $item->children, $next_level );
-      }
-      $menu_items[] = $menu_item;
     }
     return $menu_items;
   }
