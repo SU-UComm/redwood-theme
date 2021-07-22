@@ -32,7 +32,6 @@ class RWMenu extends \Timber\Menu {
     if ( $slug == 'top' ) {
       $align = get_theme_mod('top_nav_align','left' );
       $modifier_classes[] = "rw-main-nav--{$align}";
-      $modifier_classes[] = "su-main-nav--right"; //// TODO: do not use decanter's right align class just to get the hamburger right aligned
       if ( get_theme_mod( 'show_search', TRUE ) ) {
         $modifier_classes[] = "su-main-nav--mobile-search";
       }
