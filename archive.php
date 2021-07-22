@@ -29,7 +29,7 @@ if ( is_post_type_archive() ) {
 
 $context['posts'] = new Timber\PostQuery();
 
-$loader = new \Timber\Loader( __DIR__ . '/templates/main-content' );
+$loader = new \Timber\Loader( trailingslashit( get_stylesheet_directory() ). '/templates/main-content' );
 $context[ 'content_template' ] = $loader->choose_template( $templates );
 
 $layout = $context[ 'layout' ][ 'default'];
