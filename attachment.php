@@ -35,7 +35,7 @@ foreach ( $mime_type_parts as $part ) {
   array_unshift( $templates, $template . '.twig' );
 }
 
-$loader = new \Timber\Loader( __DIR__ . '/templates/main-content' );
+$loader = new \Timber\Loader( trailingslashit( get_stylesheet_directory() ) . '/templates/main-content' );
 $context[ 'content_template' ] = $loader->choose_template( $templates );
 
 $layout = $context[ 'layout' ][ 'default'];

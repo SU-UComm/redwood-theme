@@ -14,7 +14,7 @@ $context['title'] = 'Search results for "' . get_search_query() . '"';
 
 $context['posts'] = new Timber\PostQuery();
 
-$loader = new \Timber\Loader( __DIR__ . '/templates/main-content' );
+$loader = new \Timber\Loader( trailingslashit( get_stylesheet_directory() ) . '/templates/main-content' );
 $context[ 'content_template' ] = $loader->choose_template( [ 'search.twig', 'archive.twig', 'index.twig' ] );
 
 $layout = $context[ 'layout' ][ 'default'];
