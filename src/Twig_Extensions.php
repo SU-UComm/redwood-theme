@@ -209,19 +209,6 @@ class Twig_Extensions {
    */
   public function dump_context( $context ) {
     if ( isset( $context[ 'request' ]->get[ 'dump' ] ) ) {
-      $what_to_dump = $context[ 'request' ]->get[ 'dump' ];
-      $dump = "<details class='dump'>\n";
-
-      if ( is_string( $what_to_dump ) && isset( $context[ $what_to_dump ] ) ) {
-        $dump .= "<summary>Dump of {$what_to_dump}</summary>\n";
-        $dump .= "<pre>\n" . htmlentities( print_r( $context[ $what_to_dump ], TRUE ) ) . "</pre>\n";
-      }
-      else {
-        $dump .= "<summary>Dump of \$context</summary>\n";
-        $dump .= "<pre>\n" . htmlentities( print_r( $context, TRUE ) ) . "</pre>\n";
-      }
-      $dump .= "</details>\n";
-
       $style = <<<EODUMPSTYLE
 
 		<style>
@@ -234,9 +221,20 @@ class Twig_Extensions {
 			}
 		</style>
 EODUMPSTYLE;
-
       echo $style;
-      echo $dump;
+
+      foreach ( explode(',', $context[ 'request' ]->get[ 'dump' ] ) as $what_to_dump ) {
+        $dump = "<details class='dump'>\n";
+        if ( is_string( $what_to_dump ) && isset( $context[ $what_to_dump ] ) ) {
+          $dump .= "<summary>Dump of {$what_to_dump}</summary>\n";
+          $dump .= "<pre>\n" . htmlentities( print_r( $context[ $what_to_dump ], TRUE ) ) . "</pre>\n";
+        } else {
+          $dump .= "<summary>Dump of \$context</summary>\n";
+          $dump .= "<pre>\n" . htmlentities( print_r( $context, TRUE ) ) . "</pre>\n";
+        }
+        $dump .= "</details>\n";
+        echo $dump;
+      }
     }
   }
 
