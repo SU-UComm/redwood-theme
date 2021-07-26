@@ -46,12 +46,16 @@
 
   <section class="post__content">
     {{ post.content }}
+    {% block custom_fields %}
+    {% endblock %}
   </section>
 
   {% block tags %}
   {% endblock %}
 
-  {% include 'partial/prev_next.twig' %}
+  {% block pagination %}
+    {% include 'partial/prev_next.twig' %}
+  {% endblock %}
 
   {% if content_template != "archive.twig" and content_template != "author.twig" %}
 
