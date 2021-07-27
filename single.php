@@ -17,7 +17,7 @@ if ( post_password_required( $post->ID ) ) {
   $context[ 'content_template' ] = 'single-password.twig';
 }
 else {
-  $loader = new \Timber\Loader( trailingslashit( get_stylesheet_directory() ) . 'templates/main-content' );
+  $loader = new \Timber\Loader( trailingslashit( get_template_directory() ) . 'templates/main-content' );
   $context[ 'content_template' ] = $loader->choose_template( [
       'single-' . $post->ID . '.twig'
     , 'single-' . $post->post_type . '.twig'

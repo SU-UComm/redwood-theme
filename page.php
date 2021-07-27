@@ -35,7 +35,7 @@ elseif ( post_password_required( $post->ID ) ) {
   $layout = $context[ 'layout' ][ 'page' ];
 }
 else {
-  $loader = new \Timber\Loader( trailingslashit( get_stylesheet_directory() ) . '/templates/main-content' );
+  $loader = new \Timber\Loader( trailingslashit( get_template_directory() ) . 'templates/main-content' );
   $context[ 'content_template' ] = $loader->choose_template( [
       'page-' . $post->post_name . '.twig'
     , 'page.twig'
