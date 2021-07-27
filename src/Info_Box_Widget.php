@@ -42,7 +42,6 @@ class Info_Box_Widget extends \WP_Widget {
 	 * @param array $instance previously saved values from database
 	 */
 	public function form( $instance ) {
-    global $theme; // global instance of theme class (Cardinal or Cardinal_Custom)
     $title = array(
         'id'    => $this->get_field_id("title")
       , 'name'  => $this->get_field_name("title")
