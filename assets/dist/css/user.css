@@ -4964,22 +4964,18 @@ body > header blockquote {
   .su-main-nav .su-main-nav__toggle[aria-expanded="true"] + .su-main-nav__menu-lv1 + .su-site-search {
     width: calc(100% + 60px); } }
 
-.rw-main-nav--left > ul,
-.rw-main-nav--right > ul,
-.rw-main-nav--center > ul {
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end; }
+@media (max-width: 991px) {
+  .su-main-nav--left > ul,
+  .su-main-nav--left > .su-site-search,
+  .su-main-nav--center > ul,
+  .su-main-nav--center > .su-site-search {
+    left: auto;
+    right: 0; } }
 
-@media only screen and (min-width: 992px) {
-  .rw-main-nav--left > ul {
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start; }
-  .rw-main-nav--center > ul {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center; } }
+.su-main-nav--left .su-main-nav__toggle,
+.su-main-nav--center .su-main-nav__toggle {
+  margin-right: 0;
+  margin-left: auto; }
 
 nav[aria-label="pagination"] {
   text-align: center; }

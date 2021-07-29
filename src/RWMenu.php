@@ -31,7 +31,7 @@ class RWMenu extends \Timber\Menu {
     $modifier_classes = [];
     if ( $slug == 'top' ) {
       $align = get_theme_mod('top_nav_align','left' );
-      $modifier_classes[] = "rw-main-nav--{$align}";
+      $modifier_classes[] = "su-main-nav--{$align}";
       if ( get_theme_mod( 'show_search', TRUE ) ) {
         $modifier_classes[] = "su-main-nav--mobile-search";
       }
