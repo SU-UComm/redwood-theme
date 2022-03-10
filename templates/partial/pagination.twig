@@ -10,8 +10,8 @@
         {% for page in pagination.pages %}
           {% if page.link %}
             <li><a href="{{ page.link }}" aria-label="page {{ page.title }}">{{ page.title }}</a></li>
-          {# Check if page.title is a number #}
-          {% elseif (page.title / page.title) == 1 %}
+          {# Check if page current page #}
+          {% elseif page.current %}
             <li class="current"><span aria-label="current page, page {{ page.title }}" aria-current="page">{{ page.title }}</span></li>
           {% else  %}
             <li class="disabled"><span>{{ page.title }}</span></li>
