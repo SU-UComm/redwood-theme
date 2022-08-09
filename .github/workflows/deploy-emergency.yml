@@ -1,6 +1,6 @@
 ### Use resusable workflow to deploy to Pantheon
 
-name: Deploy to Pantheon
+name: Deploy to emergency-ss
 
 on:
   workflow_dispatch:
@@ -18,7 +18,7 @@ jobs:
   deploy:
     uses: SU-UComm/github-workflows/.github/workflows/deploy-to-pantheon.yml@master
     with:
-      site:                   stanford-emergency-ss                  # the site on Pantheon we're deploying to, e.g. stanford-news
+      site:                   emergency-ss                           # the site on Pantheon we're deploying to, e.g. stanford-news
       component_folder:       wp-content/themes/redwood              # where in Pantheon's repo this code should go, e.g. wp-content/themes/news
       message:                ${{ github.event.inputs.message }}     # optional message when manually running workflow
     secrets:

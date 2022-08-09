@@ -1,6 +1,6 @@
 ### Use resusable workflow to deploy to Pantheon
 
-name: Deploy to Pantheon
+name: Deploy to stanford-ucomm
 
 on:
   workflow_dispatch:
