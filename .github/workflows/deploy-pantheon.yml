@@ -1,6 +1,6 @@
 ### Use resusable workflow to deploy to Pantheon
 
-name: Deploy to stanford-auth-sites
+name: Deploy to Pantheon
 
 on:
   workflow_dispatch:
