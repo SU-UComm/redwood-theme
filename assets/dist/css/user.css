@@ -2423,6 +2423,9 @@ button[type="reset"],
       margin-top: 1em;
       margin-bottom: 2em; } }
 
+.wp-block-columns:not(.is-not-stacked-on-mobile) > .wp-block-column:not(:first-child) {
+  margin-left: 0; }
+
 @media (max-width: 599px) {
   .wp-block-column {
     margin-bottom: 1em; } }
