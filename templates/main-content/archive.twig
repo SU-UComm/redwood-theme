@@ -5,6 +5,15 @@
 {% block subtitle %}
 {% endblock %}
 
+{% block desc %}
+  {% if term.desc %}
+    <div class="intro-text">
+      {{ term.desc }}
+    </div>
+    <hr/>
+  {% endif %}
+{% endblock %}
+
 {% for post in posts %}
   {% if option.list_page_display == 'excerpts' %}
     {% include ["partial/tease-"~post.post_type~".twig", "partial/tease.twig"] %}

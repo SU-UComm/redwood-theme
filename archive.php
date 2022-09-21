@@ -27,6 +27,9 @@ if ( is_post_type_archive() ) {
   array_unshift( $templates, 'archive-' . get_query_var( 'tag' ) . '.twig' );
 }
 
+$context[ 'term' ] = new Timber\Term();
+$context[ 'term' ]->desc = get_the_archive_description();
+
 $context['posts'] = new Timber\PostQuery();
 
 $loader = new \Timber\Loader( trailingslashit( get_template_directory() ) . 'templates/main-content' );
