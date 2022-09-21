@@ -22,10 +22,13 @@ $context[ 'title' ] = get_the_archive_title();
 if ( is_post_type_archive() ) {
   array_unshift( $templates, 'archive-' . get_post_type() . '.twig' );
 } else if ( is_category() ) {
-	array_unshift( $templates, 'archive-' . get_query_var( 'cat' ) . '.twig' );
+	array_unshift( $templates, 'archive-' . get_query_var( 'category_name' ) . '.twig' );
 } else if ( is_tag() ) {
   array_unshift( $templates, 'archive-' . get_query_var( 'tag' ) . '.twig' );
 }
+
+$context[ 'term' ] = new Timber\Term();
+$context[ 'term' ]->desc = get_the_archive_description();
 
 $context['posts'] = new Timber\PostQuery();
 
