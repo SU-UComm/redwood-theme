@@ -4680,6 +4680,175 @@ main > section > h1:first-of-type,
     padding-bottom: 3.6rem;
     border-bottom: 2px solid #b1040e; } }
 
+.frm_form_fields fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0; }
+
+.frm_form_fields .frm_form_field:not(.form-heading) {
+  margin-bottom: 2rem; }
+  @media only screen and (min-width: 768px) {
+    .frm_form_fields .frm_form_field:not(.form-heading) {
+      margin-bottom: 2.6rem; } }
+  @media only screen and (min-width: 1500px) {
+    .frm_form_fields .frm_form_field:not(.form-heading) {
+      margin-bottom: 2.7rem; } }
+
+.frm_form_fields .frm_primary_label {
+  margin-bottom: 0.8rem;
+  font-weight: 600; }
+  @media only screen and (min-width: 768px) {
+    .frm_form_fields .frm_primary_label {
+      margin-bottom: 0.9rem; } }
+  @media only screen and (min-width: 1500px) {
+    .frm_form_fields .frm_primary_label {
+      margin-bottom: 1rem; } }
+
+.frm_form_fields .frm_required {
+  color: #b1040e; }
+
+.frm_form_fields input, .frm_form_fields textarea, .frm_form_fields select, .frm_form_fields .wp-editor-container {
+  border-color: #6b7280;
+  max-width: none; }
+  .frm_form_fields input:focus, .frm_form_fields textarea:focus, .frm_form_fields select:focus, .frm_form_fields .wp-editor-container:focus {
+    border-color: #006cb8;
+    border-width: 2px;
+    -webkit-box-shadow: none;
+            box-shadow: none; }
+
+.frm_form_fields .frm_radio,
+.frm_form_fields .frm_checkbox {
+  margin-bottom: 0.8rem; }
+  @media only screen and (min-width: 768px) {
+    .frm_form_fields .frm_radio,
+    .frm_form_fields .frm_checkbox {
+      margin-bottom: 0.9rem; } }
+  @media only screen and (min-width: 1500px) {
+    .frm_form_fields .frm_radio,
+    .frm_form_fields .frm_checkbox {
+      margin-bottom: 1rem; } }
+  .frm_form_fields .frm_radio + .frm_radio,
+  .frm_form_fields .frm_checkbox + .frm_radio {
+    margin-bottom: 0.8rem; }
+    @media only screen and (min-width: 768px) {
+      .frm_form_fields .frm_radio + .frm_radio,
+      .frm_form_fields .frm_checkbox + .frm_radio {
+        margin-bottom: 0.9rem; } }
+    @media only screen and (min-width: 1500px) {
+      .frm_form_fields .frm_radio + .frm_radio,
+      .frm_form_fields .frm_checkbox + .frm_radio {
+        margin-bottom: 1rem; } }
+  .frm_form_fields .frm_radio label,
+  .frm_form_fields .frm_checkbox label {
+    font-weight: 400; }
+
+.frm_form_fields .frm_checkbox {
+  margin-bottom: 0; }
+
+.frm_form_fields .frm_description {
+  font-size: 0.8em; }
+
+.frm_form_fields input[type=radio], .frm_form_fields input[type=checkbox] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-width: 1px;
+  border-color: #6b7280;
+  display: inline-block;
+  margin: 0;
+  height: 2.4rem;
+  width: 2.4rem;
+  vertical-align: middle; }
+  .frm_form_fields input[type=radio]:focus, .frm_form_fields input[type=checkbox]:focus {
+    -webkit-box-shadow: white 0px 0px 0px 2px, #006cb8 0px 0px 0px 4px, rgba(46, 45, 41, 0) 0px 0px 0px 0px;
+            box-shadow: white 0px 0px 0px 2px, #006cb8 0px 0px 0px 4px, rgba(46, 45, 41, 0) 0px 0px 0px 0px; }
+  .frm_form_fields input[type=radio]:checked, .frm_form_fields input[type=checkbox]:checked {
+    background-color: #006cb8;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-color: transparent; }
+
+.frm_form_fields input[type=radio] {
+  border-radius: 100rem; }
+  .frm_form_fields input[type=radio]:checked {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e"); }
+
+.frm_form_fields input[type=checkbox] {
+  margin-right: .5rem; }
+  .frm_form_fields input[type=checkbox]:hover {
+    -webkit-filter: brightness(100%);
+            filter: brightness(100%); }
+  .frm_form_fields input[type=checkbox]:checked {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e"); }
+    .frm_form_fields input[type=checkbox]:checked:after {
+      display: none; }
+    .frm_form_fields input[type=checkbox]:checked:focus {
+      background-color: #006cb8; }
+
+.frm_form_fields .wp-editor-tabs button {
+  color: #2e2d29;
+  border-color: #6b7280;
+  border-style: solid;
+  border-left-width: 1px;
+  border-top-width: 1px;
+  border-right-width: 1px; }
+  .frm_form_fields .wp-editor-tabs button:focus, .frm_form_fields .wp-editor-tabs button:hover {
+    -webkit-box-shadow: none;
+            box-shadow: none; }
+
+.frm_form_fields .tmce-active .switch-tmce {
+  background-color: #d5d5d4; }
+
+.frm_form_fields .tmce-active .switch-html {
+  background: #ffffff; }
+
+.frm_form_fields .html-active .switch-tmce {
+  background-color: #ffffff; }
+
+.frm_form_fields .html-active .switch-html {
+  background: #d5d5d4; }
+
+.frm_form_fields .html-active .ed_button {
+  background-color: #ffffff;
+  border-color: #2271b1;
+  height: auto;
+  width: auto; }
+
+.frm_form_fields .mce-toolbar-grp,
+.frm_form_fields .quicktags-toolbar {
+  background-color: #d5d5d4; }
+
+.frm_form_fields .mce-container-body button {
+  background-color: #ffffff; }
+
+.frm_form_fields .frm_blank_field label,
+.frm_form_fields .frm_blank_field .frm_error {
+  color: #b1040e;
+  font-weight: 600; }
+
+.frm_form_fields .frm_blank_field input {
+  border-color: #b1040e; }
+
+.frm_form_fields .frm_blank_field .mce-edit-area iframe {
+  border: 1px solid #b1040e; }
+
+.frm_form_fields .frm_form_field.frm_two_col .frm_opt_container {
+  grid-gap: 1rem;
+  margin-bottom: 1rem; }
+
+.frm_error_style {
+  margin-bottom: 1.1rem;
+  background-color: #b1040e;
+  color: #ffffff;
+  padding: 2rem; }
+  @media only screen and (min-width: 768px) {
+    .frm_error_style {
+      margin-bottom: 1.2rem; } }
+  @media only screen and (min-width: 1500px) {
+    .frm_error_style {
+      margin-bottom: 1.3rem; } }
+
 .banner {
   margin-bottom: 0; }
   .banner > img {
