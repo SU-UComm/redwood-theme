@@ -4833,7 +4833,10 @@ main > section > h1:first-of-type,
 .frm_form_fields .frm_blank_field .mce-edit-area iframe {
   border: 1px solid #b1040e; }
 
-.frm_form_fields .frm_form_field.frm_two_col .frm_opt_container {
+.frm_form_fields .frm_form_field.frm_one_col .frm_opt_container,
+.frm_form_fields .frm_form_field.frm_two_col .frm_opt_container,
+.frm_form_fields .frm_form_field.frm_three_col .frm_opt_container,
+.frm_form_fields .frm_form_field.frm_four_col .frm_opt_container {
   grid-gap: 1rem;
   margin-bottom: 1rem; }
 
