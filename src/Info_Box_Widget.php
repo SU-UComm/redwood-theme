@@ -24,7 +24,7 @@ class Info_Box_Widget extends \WP_Widget {
     $data = [
         'icon'          => trim( $instance['icon'] )
       , 'title'         => trim( $instance[ 'title' ] )
-      , 'content'       => trim( $instance[ 'text' ] )
+      , 'content'       => trim( do_shortcode( $instance[ 'text' ] ) )
       , 'before_widget' => $args[ 'before_widget' ]
       , 'after_widget'  => $args[ 'after_widget' ]
       , 'before_title'  => $args[ 'before_title' ]
