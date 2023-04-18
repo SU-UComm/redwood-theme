@@ -4852,6 +4852,31 @@ main > section > h1:first-of-type,
     .frm_error_style {
       margin-bottom: 1.3rem; } }
 
+.chosen-container-single .chosen-single {
+  display: block;
+  position: relative; }
+  .chosen-container-single .chosen-single abbr {
+    display: block;
+    position: absolute;
+    right: 26px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    font-size: 1px;
+    background: url(//srads.authsites.local/wp-content/plugins/formidable-pro/images/chosen-sprite.png) -42px 1px no-repeat; }
+  .chosen-container-single .chosen-single div {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    height: 100%;
+    width: 18px; }
+    .chosen-container-single .chosen-single div b {
+      background: url(//srads.authsites.local/wp-content/plugins/formidable-pro/images/chosen-sprite.png) no-repeat 0 2px;
+      display: block;
+      width: 100%;
+      height: 100%; }
+
 .banner {
   margin-bottom: 0; }
   .banner > img {
