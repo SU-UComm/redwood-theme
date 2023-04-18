@@ -4852,6 +4852,13 @@ main > section > h1:first-of-type,
     .frm_error_style {
       margin-bottom: 1.3rem; } }
 
+a.dz-remove.frm_icon_font.frm_cancel1_icon {
+  color: #b1040e;
+  text-decoration: none; }
+  a.dz-remove.frm_icon_font.frm_cancel1_icon::before {
+    content: '\f057';
+    font-family: 'Font Awesome 5 Free'; }
+
 .banner {
   margin-bottom: 0; }
   .banner > img {
