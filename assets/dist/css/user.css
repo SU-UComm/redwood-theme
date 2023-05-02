@@ -4840,6 +4840,9 @@ main > section > h1:first-of-type,
   grid-gap: 1rem;
   margin-bottom: 1rem; }
 
+.frm_form_fields .frm_form_field input[readonly="readonly"] {
+  color: #6d6c69; }
+
 .frm_error_style {
   margin-bottom: 1.1rem;
   background-color: #b1040e;
