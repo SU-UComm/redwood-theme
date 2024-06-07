@@ -18,7 +18,7 @@ use Twig\Template;
 
 class GetAttrExpression extends AbstractExpression
 {
-    public function __construct(AbstractExpression $node, AbstractExpression $attribute, AbstractExpression $arguments = null, string $type, int $lineno)
+    public function __construct(AbstractExpression $node, AbstractExpression $attribute, ?AbstractExpression $arguments, string $type, int $lineno)
     {
         $nodes = ['node' => $node, 'attribute' => $attribute];
         if (null !== $arguments) {
@@ -28,7 +28,7 @@ class GetAttrExpression extends AbstractExpression
         parent::__construct($nodes, ['type' => $type, 'is_defined_test' => false, 'ignore_strict_check' => false, 'optimizable' => true], $lineno);
     }
 
-    public function compile(Compiler $compiler)
+    public function compile(Compiler $compiler): void
     {
         $env = $compiler->getEnvironment();
 
@@ -57,7 +57,7 @@ class GetAttrExpression extends AbstractExpression
             return;
         }
 
-        $compiler->raw('twig_get_attribute($this->env, $this->source, ');
+        $compiler->raw('CoreExtension::getAttribute($this->env, $this->source, ');
 
         if ($this->getAttribute('ignore_strict_check')) {
             $this->getNode('node')->setAttribute('ignore_strict_check', true);
@@ -85,5 +85,3 @@ class GetAttrExpression extends AbstractExpression
         ;
     }
 }
-
-class_alias('Twig\Node\Expression\GetAttrExpression', 'Twig_Node_Expression_GetAttr');

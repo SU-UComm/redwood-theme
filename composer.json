@@ -24,11 +24,17 @@
   	}
 	},
   "require": {
-    "timber/timber": "^1.7"
+    "timber/timber": "2.0.0",
+    "twig/twig": "3.9.3"
   },
   "autoload": {
     "psr-4": {
       "Stanford\\Redwood\\": "src/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
     }
   }
 }
