@@ -1,6 +1,6 @@
 {% if posts.pagination.pages is not empty %}
   <nav aria-label="pagination">
-    <ul>{% spaceless %}
+    <ul>{% apply spaceless %}
         {% if pagination.prev %}
           <li><a href="{{ pagination.prev.link }}" rel="prev">Previous</a></li>
         {% else %}
@@ -23,6 +23,6 @@
         {% else %}
           <li class="disabled"><span>Next</span></li>
         {% endif %}
-      {% endspaceless %}</ul>
+      {% endapply %}</ul>
   </nav>
 {% endif %}

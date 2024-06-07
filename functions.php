@@ -1,5 +1,6 @@
 <?php
 namespace Stanford\Redwood;
+use Timber;
 
 require_once( __DIR__ . '/vendor/autoload.php' );
 
@@ -7,7 +8,7 @@ require_once( __DIR__ . '/vendor/autoload.php' );
 const TEXT_DOMAIN = 'stanford';
 
 // load Timber
-$timber = new \Timber\Timber();
+Timber\Timber::init();
 
 if ( ! class_exists( 'Timber' ) ) {
 	add_action( 'admin_notices', function() {

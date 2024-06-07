@@ -26,6 +26,7 @@
   <button class="su-main-nav__toggle {{ toggle_modifier_class }}" aria-expanded="false">{{ toggle_text|default('Menu') }}</button>
   <ul class="su-main-nav__menu-lv1">
       {% if list_items is iterable %}
+      
         {# If no custom markup, generate markup based on structured data #}
         {% for item in list_items %}
           {% set is_parent = item.lv2 is empty ? false : true %}
