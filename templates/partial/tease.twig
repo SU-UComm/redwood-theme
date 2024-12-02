@@ -28,7 +28,7 @@
 
   {% block content %}
 		<p>
-			{{ post.preview.length( 30 ).strip('<a><b><code><del><em><i><mark><pre><q><s><strong><sub><sup><u>' ) }}
+			{{ post.preview.length( 30 ).read_more( 'Read more' ).strip('<a><b><code><del><em><i><mark><pre><q><s><strong><sub><sup><u>' ) }}
 		</p>
   {% endblock %}
 
