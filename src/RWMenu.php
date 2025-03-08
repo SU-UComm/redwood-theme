@@ -1,5 +1,6 @@
 <?php
 namespace Stanford\Redwood;
+use Timber\Timber;
 
 /**
  * Class RWMenu extends \Timber\Menu
@@ -13,7 +14,7 @@ class RWMenu extends \Timber\Menu {
 
   /** @var array data formatted for Decanter's main-nav.twig */
   protected $decanter_data;
-
+  
   /**
    * Initialize a Redwood menu.
    *
@@ -26,8 +27,9 @@ class RWMenu extends \Timber\Menu {
     if ( !isset( $options[ 'depth' ] ) || $options[ 'depth' ] > 2 ) {
       $options[ 'depth' ] = 2;
     }
-    parent::__construct( $slug, $options );
 
+    $this->menu = Timber::get_menu( $slug, $options );
+    
     $modifier_classes = [];
     if ( $slug == 'top' ) {
       $align = get_theme_mod('top_nav_align','left' );
@@ -42,9 +44,9 @@ class RWMenu extends \Timber\Menu {
       }
     }
     $modifier_class = implode( ' ', $modifier_classes );
-    $this->decanter_data = [
+    $this->menu->decanter_data = [
         "toggle_text" => "Menu"
-      , "list_items" => $this->_structure_items( $this->items )
+      , "list_items" => $this->_structure_items( $this->menu->items )
       , "modifier_class" => $modifier_class
       , "mobile_search" => [
             "action" => "/"
@@ -89,7 +91,7 @@ class RWMenu extends \Timber\Menu {
    * @return array data formatted for Decanter's main-nav.twig template
    */
   public function get_decanter_data() {
-    return $this->decanter_data;
+    return $this->menu->decanter_data;
   }
 
 }

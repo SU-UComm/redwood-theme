@@ -12,10 +12,10 @@
 global $wp_query;
 
 $context          = Timber::get_context();
-$context['posts'] = new Timber\PostQuery();
+$context['posts'] = Timber::query_post();
 
 if ( isset( $wp_query->query_vars['author'] ) ) {
-	$author = new Timber\User( $wp_query->query_vars['author'] );
+	$author = Timber::get_user( $wp_query->query_vars['author'] );
 	$context[ 'author' ] = $author;
 	$context[ 'title'  ] = $author->name();
 

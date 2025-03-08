@@ -28,9 +28,8 @@
 
   {% block content %}
 		<p>
-			{{ post.get_preview( 30, 0, '', '<a><b><code><del><em><i><mark><pre><q><s><strong><sub><sup><u>' ) }}
+			{{ post.preview.length( 30 ).read_more( 'Read more' ).strip('<a><b><code><del><em><i><mark><pre><q><s><strong><sub><sup><u>' ) }}
 		</p>
-    {% if post.link %}<a href="{{ post.link }}" class="read-more">Read more<span class="su-sr-only-element"> about {{ post.title }}</span></a>{% endif %}
   {% endblock %}
 
 </article>

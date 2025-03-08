@@ -27,14 +27,15 @@ if ( is_post_type_archive() ) {
   array_unshift( $templates, 'archive-' . get_query_var( 'tag' ) . '.twig' );
 }
 
-$context[ 'term' ] = new Timber\Term();
+$context[ 'term' ] = Timber::get_term();
 $context[ 'term' ]->desc = get_the_archive_description();
 
-$context['posts'] = new Timber\PostQuery();
+$context['posts'] = Timber::get_posts();
 
 $loader = new \Timber\Loader( trailingslashit( get_template_directory() ) . 'templates/main-content' );
 $context[ 'content_template' ] = $loader->choose_template( $templates );
 
 $layout = $context[ 'layout' ][ 'default'];
 $layout_template = $context[ 'layout' ][ 'template' ][ $layout ] ;
+
 Timber::render( $layout_template, $context );

@@ -13,7 +13,7 @@
  * @since   Timber 0.1
  */
 $context = Timber::get_context();
-$context[ 'posts' ] = new Timber\PostQuery();
+$context[ 'posts' ] = Timber::query_post();
 
 if ( is_home() ) {
   $context[ 'homepage' ] = TRUE;

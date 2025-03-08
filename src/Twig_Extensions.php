@@ -2,6 +2,7 @@
 namespace Stanford\Redwood;
 
 use Stanford\Redwood\Utilities;
+use Timber\Timber;
 
 class Twig_Extensions {
 
@@ -57,11 +58,13 @@ class Twig_Extensions {
     }
     $context[ 'pre_footer'  ] = \Timber\Timber::get_widgets( 'fat-footer'  );
 
-    // add query strings to Timber context
-    $query_strings = $context[ 'request' ]->get;
-    foreach ( $query_strings as $query_string => $value ) {
-      $context[ $query_string ] = empty( $value ) ? TRUE : $value;
-    }
+    if ( ! empty( $context[ 'request' ] ) ) :
+      // add query strings to Timber context
+      $query_strings = $context[ 'request' ]->get;
+      foreach ( $query_strings as $query_string => $value ) {
+        $context[ $query_string ] = empty( $value ) ? TRUE : $value;
+      }
+    endif;
 
     // add previous, next post links to Timber context
     if ( is_single() ) {
@@ -272,7 +275,9 @@ EODUMPSTYLE;
    * @return array
    */
   public function add_stickiness( $post_meta, $pid, $timber_post ) {
-    $post_meta[ 'is_sticky' ] = is_sticky( $pid );
+    if ( 'post' === get_post_type( $timber_post ) && 'nav_menu_item' !== get_post_type( $timber_post )  ) {
+      $post_meta[ 'is_sticky' ] = is_sticky( $pid );
+    }
     return $post_meta;
   }
 
@@ -291,12 +296,12 @@ EODUMPSTYLE;
    */
   public function add_to_twig( $twig ) {
     /* this is where you can add your own functions to twig */
-    $twig->addExtension( new \Twig_Extension_StringLoader() );
-    $twig->addFunction(  new \Twig_Function( 'hello', [ $this, 'hello' ] ) );
-    $twig->addFunction(  new \Twig_Function( 'pluralize', [ $this, 'pluralize' ] ) );
-    $twig->addFunction(  new \Twig_Function( 'hello_with_context', [ $this, 'hello_with_context' ], [ 'needs_context' => TRUE ] ) );
-    $twig->addFunction(  new \Twig_Function( 'dump_context', [ $this, 'dump_context' ], [ 'needs_context' => TRUE ] ) );
-    $twig->addFilter(    new \Twig_SimpleFilter( 'emphasize', [ $this, 'emphasize'] ) );
+		$twig->addExtension( new \Twig\Extension\StringLoaderExtension() );
+    $twig->addFunction(  new \Twig\TwigFunction( 'hello', [ $this, 'hello' ] ) );
+    $twig->addFunction(  new \Twig\TwigFunction( 'pluralize', [ $this, 'pluralize' ] ) );
+    $twig->addFunction(  new \Twig\TwigFunction( 'hello_with_context', [ $this, 'hello_with_context' ], [ 'needs_context' => TRUE ] ) );
+    $twig->addFunction(  new \Twig\TwigFunction( 'dump_context', [ $this, 'dump_context' ], [ 'needs_context' => TRUE ] ) );
+    //$twig->addFilter(    new \Twig_SimpleFilter( 'emphasize', [ $this, 'emphasize'] ) );
 
     return $twig;
   }
@@ -326,10 +331,10 @@ EODUMPSTYLE;
   protected function __construct( $theme ) {
     $this->theme = $theme;
 
+		add_filter('timber/twig', array($this, 'add_to_twig'));
     add_filter( 'timber/loader/loader', [ $this, 'add_template_paths' ] );
     add_filter( 'timber_context',       [ $this, 'add_to_context'     ] );
     add_filter( 'timber_post_get_meta', [ $this, 'add_stickiness'     ], 10, 3 );
-    add_filter( 'get_twig',             [ $this, 'add_to_twig'        ] );
   }
 
   /**
@@ -341,6 +346,5 @@ EODUMPSTYLE;
     }
     return self::$instance;
   }
-
 
 }
