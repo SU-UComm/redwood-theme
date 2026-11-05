@@ -1,8 +1,7 @@
 {
-  "admin.js": "admin.js",
-  "admin.js.map": "admin.js.map",
+  "admin.js": "admin.d563bb6949e225196ee6.js",
+  "admin.js.map": "admin.d563bb6949e225196ee6.js.map",
   "user.css": "../css/user.css",
-  "user.css.map": "../css/user.css.map",
-  "user.js": "user.js",
-  "user.js.map": "user.js.map"
+  "user.js": "user.d563bb6949e225196ee6.js",
+  "user.js.map": "user.d563bb6949e225196ee6.js.map"
 }
